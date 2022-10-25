@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default function Container({ children }) {
   return (
-    <main className="mx-auto max-w-screen-sm rounded-xl shadow-sm">
+    <main className="mx-auto min-w-[510px] max-w-[640px] rounded-xl shadow-sm">
       {children}
     </main>
   );
