@@ -6,10 +6,13 @@ export default function Header() {
   const [currentRates, setCurrentRates] = useState({});
 
   useEffect(() => {
-    currencyApi
-      .getLatest()
-      .then((data) => setCurrentRates(data))
-      .catch((e) => console.log(e.message));
+    const id = setInterval(() => {
+      currencyApi
+        .getLatest()
+        .then((data) => setCurrentRates(data))
+        .catch((e) => console.log(e.message));
+    }, 15000);
+    return () => clearInterval(id);
   }, []);
   const currentUsd = (1 / currentRates.USD).toFixed(2);
   const currentEur = (1 / currentRates.EUR).toFixed(2);
